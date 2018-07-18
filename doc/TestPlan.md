@@ -24,7 +24,7 @@ Conda is a package manager designed to be a cross-platform version of
 something like `apt-get` or `dnf`. It installs packages from its own
 repositories called channels and installs them into a Conda environment
 on the local machine. Bioconda is a channel specializing in bioinformatics 
-software. Other terms that can be confusing are Anaconda and Microconda.
+software. Other terms that can be confusing are Anaconda and miniconda.
 These last two are distributions and not package managers.
 
 * Package managers:
@@ -40,7 +40,7 @@ These last two are distributions and not package managers.
   Anaconda:
   Conda + Python + Full distribution of software in PyData ecosystem
 
-  Microconda:
+  miniconda:
   Conda + Python
 
 <a name="Packages hosted"></a>
