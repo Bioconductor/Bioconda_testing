@@ -88,6 +88,8 @@ https://github.com/bioconda/bioconda-recipes/issues/8042
   packages installed? Can this be controlled or remided with 
   `R_LIBS_USER` or setting a location in `BiocManager::install(..., loc=...)`?
 
+* `conda install` a file or list to install multiple packages.
+
 * Run through 'Common Tests'.
 
 <a name="Dockers"></a>
