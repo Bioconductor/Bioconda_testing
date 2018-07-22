@@ -67,13 +67,16 @@ containers.
 <a name="CondaPackageManager"></a>
 ### Conda package manager
 
-* Explore how to install Conda, point to the `bioconda` channel and work
-  with the virtual environment. It sounds like the order of adding channels
+* Install Conda, point to the `bioconda` channel and install packages
+  into the virtual environment. Where are packages installed? How
+  is an 'uninstall' handled?
+ 
+  NOTE: It sounds like the order of adding channels
   is important:
 
-    conda config --add channels defaults
-    conda config --add channels conda-forge
-    conda config --add channels bioconda
+      conda config --add channels defaults
+      conda config --add channels conda-forge
+      conda config --add channels bioconda
 
 * What is the `r` channel and how does it play with `conda-forge` and
   `bioconda` channels?
@@ -89,6 +92,11 @@ https://github.com/bioconda/bioconda-recipes/issues/8042
   `R_LIBS_USER` or setting a location in `BiocManager::install(..., loc=...)`?
 
 * `conda install` a file or list to install multiple packages.
+
+* What happens in the Bioconda build system when a system dependency is not
+  available? Does `R CMD INSTALL` skip or error on code that requires
+  that system dependency, i.e., is the package 'installable' but not fully
+  functional?
 
 * Run through 'Common Tests'.
 
@@ -109,6 +117,13 @@ The Bioconda term for a Docker is 'BioContainer'.
   - Does the size of the primary/base Docker change with many layers?
   - What happens when layering a Docker that contains a Bioconductor package 
     already installed in the first Docker? Is this a no-op?
+  - Is there a concept of 'unlayering', e.g., removing one of the layered
+    dockers?
+  - After layering several dockers, try uninstalling an R package that is
+    a dependency for another docker. Was the package uninstalled and does
+    this break the dependent package? For example, install S4Vectors docker 
+    then DelayedArray docker. Uninstall (remove or unlayer) the S4Vectors 
+    docker. Is DelayedArray still functional?
 
 * Run through 'Common Tests'.
 
