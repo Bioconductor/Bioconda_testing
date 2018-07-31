@@ -107,11 +107,38 @@ The Bioconda term for a Docker is 'BioContainer'.
 
 * Explore how to install a single BioContainer.
 
+	Set username and password for quay.io account, this must be done to
+	start pushing and pulling containers from `quay.io`.
+
+	In the command line:
+
+	(Enter username and password, you should get a login successful notice.)
+
+		docker login quay.io
+
+		docker pull quay.io/biocontainers/bioconductor-deseq2:1.18.1--r3.4.1_1
+
+	NOTE: All bioconductor packages start with
+    `bioconductor-<package_name>`. The tag set is important. Quay.io
+    does not pull the image without a tag. In the example above, the
+    tag is `1.18.1--r3.4.1_1`.
+
+
 * Is R already installed in the individual Dockers containing Bioconductor 
   packages? 
 
+	Yes, R is installed from the conda-forge R-recipe
+
 * Is Conda installed by default in these BioContainers and if yes, what
   channels is it pointing to?
+
+	No, conda is not installed on the Biocontainers.
+
+	R-version on container:
+
+		R version 3.4.1 (2017-06-30)
+		Platform: x86_64-pc-linux-gnu (64-bit)
+		Running under: Buildroot 2014.02
 
 * How does layering work?
   - Does the size of the primary/base Docker change with many layers?
