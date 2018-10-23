@@ -40,7 +40,7 @@ Method: setting up a separate Miniconda installation and running bioconda-utils.
 		source ~/.config/bioconda/activate
 
 
-The last command activates the `base` environment for conda with,
+  The last command activates the `base` environment for conda with,
  
 	python 3.6
 
@@ -60,22 +60,22 @@ The last command activates the `base` environment for conda with,
 
 		cat bioconda-recipes/config.yml
 
-This results,
+  This results,
 
-```
-env_matrix: "scripts/env_matrix.yml"
 
-blacklists:
-    - "build-fail-blacklist"
+		env_matrix: "scripts/env_matrix.yml"
 
-# Channels ordered from highest to lowest priority. This should match the order
-# of .condarc, but when adding channels using conda config --add, they should
-# be added in reverse (from low to high priority).
-channels:
-    - conda-forge
-    - bioconda
-    - defaults
-```
+		blacklists:
+			- "build-fail-blacklist"
+
+		# Channels ordered from highest to lowest priority. This should match the order
+		# of .condarc, but when adding channels using conda config --add, they should
+		# be added in reverse (from low to high priority).
+		channels:
+			- conda-forge
+			- bioconda
+			- defaults
+
 
 1. Create new recipe as a test for BiocOncoTK,
 
@@ -86,30 +86,31 @@ channels:
 		bioconda-utils bioconductor-skeleton recipes config.yml BiocOncoTK
 		
 		
-This results in
+	This results in
 		
-```		
-12:39:05 BIOCONDA INFO Making recipe for: BiocOncoTK
-12:39:05 BIOCONDA DEBUG BiocOncoTK==1.0.3, BioC==3.7
-12:39:15 BIOCONDA INFO Using tarball from http://bioconductor.org/packages/3.7/bioc/src/contrib/BiocOncoTK_1.0.3.tar.gz
-12:39:15 BIOCONDA INFO creating recipes/bioconductor-bioconcotk
-12:39:18 BIOCONDA INFO Downloading http://bioconductor.org/packages/3.7/bioc/src/contrib/BiocOncoTK_1.0.3.tar.gz to /var/folders/g2/j0ltphps6_90_9dhhv7m77xr0000gp/T/cached_bioconductor_tarballs/BiocOncoTK_1.0.3.tar.gz
-12:39:32 BIOCONDA INFO BioConductor dependency: name="ComplexHeatmap" version=""
-12:39:35 BIOCONDA INFO            R dependency: name="DT" version=""
-12:39:38 BIOCONDA INFO            R dependency: name="R" version=">=3.5.0"
-12:39:39 BIOCONDA INFO BioConductor dependency: name="S4Vectors" version=""
-12:39:40 BIOCONDA INFO            R dependency: name="bigrquery" version=""
-12:39:40 BIOCONDA INFO            R dependency: name="dplyr" version=""
-12:39:41 BIOCONDA INFO            R dependency: name="httr" version=""
-12:39:41 BIOCONDA INFO            R dependency: name="magrittr" version=""
-12:39:42 BIOCONDA INFO            R dependency: name="rjson" version=""
-12:39:42 BIOCONDA INFO            R dependency: name="shiny" version=""
-12:39:42 BIOCONDA INFO Wrote recipe in recipes/bioconductor-bioconcotk
-```
+ ```		
+ 12:39:05 BIOCONDA INFO Making recipe for: BiocOncoTK
+ 12:39:05 BIOCONDA DEBUG BiocOncoTK==1.0.3, BioC==3.7
+ 12:39:15 BIOCONDA INFO Using tarball from http://bioconductor.org/packages/3.7/bioc/src/contrib/BiocOncoTK_1.0.3.tar.gz
+ 12:39:15 BIOCONDA INFO creating recipes/bioconductor-bioconcotk
+ 12:39:18 BIOCONDA INFO Downloading http://bioconductor.org/packages/3.7/bioc/src/contrib/BiocOncoTK_1.0.3.tar.gz to /var/folders/g2/j0ltphps6_90_9dhhv7m77xr0000gp/T/cached_bioconductor_tarballs/BiocOncoTK_1.0.3.tar.gz
+ 12:39:32 BIOCONDA INFO BioConductor dependency: name="ComplexHeatmap" version=""
+ 12:39:35 BIOCONDA INFO            R dependency: name="DT" version=""
+ 12:39:38 BIOCONDA INFO            R dependency: name="R" version=">=3.5.0"
+ 12:39:39 BIOCONDA INFO BioConductor dependency: name="S4Vectors" version=""
+ 12:39:40 BIOCONDA INFO            R dependency: name="bigrquery" version=""
+ 12:39:40 BIOCONDA INFO            R dependency: name="dplyr" version=""
+ 12:39:41 BIOCONDA INFO            R dependency: name="httr" version=""
+ 12:39:41 BIOCONDA INFO            R dependency: name="magrittr" version=""
+ 12:39:42 BIOCONDA INFO            R dependency: name="rjson" version=""
+ 12:39:42 BIOCONDA INFO            R dependency: name="shiny" version=""
+ 12:39:42 BIOCONDA INFO Wrote recipe in recipes/bioconductor-bioconcotk
+ ```
 
-There is a new recipe now, in 
+  There is a new recipe now, in 
 
 	/Users/ni41435_ca/Documents/bioconda-recipes/recipes/bioconductor-bioconcotk
+
 
 1. build and test, **WITHOUT** docker
 
