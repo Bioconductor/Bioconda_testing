@@ -56,7 +56,7 @@ To make sure that this worked the best way to check is looking at the
 More information: [Managing Conda Channels][]
 
 
-Following this, the installation of packages in an conda environment
+Following this, the installation of packages in a conda environment
 is straight forward. 
 
 1. To create a new conda envinronment, 
@@ -80,7 +80,7 @@ is straight forward.
 	
 	Conda installs R-3.5.1 as the default R version. The packages
     available via conda for Bioconductor are only going to be the ones
-    in RELEASE_X_Y. 
+    in the lastest RELEASE_X_Y. 
 	
 	Bioconductor `devel` packages are not available at the
     moment. Neither is R-devel.
