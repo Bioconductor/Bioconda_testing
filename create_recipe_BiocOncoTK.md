@@ -123,3 +123,7 @@ Method: setting up a separate Miniconda installation and running bioconda-utils.
 
 
 
+        conda build bioconductor-bioconcotk
+
+
+
