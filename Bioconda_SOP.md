@@ -3,6 +3,7 @@ Using Bioconda for Bioconductor package management
 
 ## Goal 
 
+
 The goal of this document is to give a brief outline of how to
 use [Bioconda][] for Bioconductor package management and installation. 
 
@@ -13,10 +14,38 @@ This document aims to support a few users who have chosen to use the
 conda package manager. It is not a replacement in any way for the
 canonical method of using Bioconductor(given [Install Bioconductor][]).
 
+### When should I be using Bioconda?
+
+**When to use:**
+
+1. Deploying a service, pipeline or a workflow, where you have a fixed
+  list of packages.
+
+1. When you are using a system without `sudo` privileges and packages
+  you are installing have system dependencies.
+	
+1. When you need a complete reproducible environment which is portable
+  to other systems.
+
+**When NOT to use:**
+
+1. When you need R-devel and/or Bioconductor devel, e.g: when
+  developing a new bioconductor package.
+
+1. When you want to add packages to your R session within the R console
+  interactively.
+  
+1. When you want to use packages which don't have a recipe on
+  Bioconda/conda-forge, e.g: Github packages.
+  
+1. When it's important for you to have bug-fixes and other updates that
+  are not yet available on Bioconda/conda-forge.
+
+
 ## How to use Bioconductor with Bioconda
 
 Conda is a package manager which allows for installing packages in
-different languages on a conda environement within the users machine.
+different languages on a conda environment within the users machine.
 
 "Bioconda is a channel for the conda package manager specializing in
 bioinformatics software. Bioconda consists of: a repository of recipes
@@ -59,7 +88,7 @@ More information: [Managing Conda Channels][]
 Following this, the installation of packages in a conda environment
 is straight forward. 
 
-1. To create a new conda envinronment, 
+1. To create a new conda environment, 
 
 		conda create --name <my_environment>
 	
@@ -80,7 +109,7 @@ is straight forward.
 	
 	Conda installs R-3.5.1 as the default R version. The packages
     available via conda for Bioconductor are only going to be the ones
-    in the lastest RELEASE_X_Y. 
+    in the latest RELEASE_X_Y. 
 	
 	Bioconductor `devel` packages are not available at the
     moment. Neither is R-devel.
@@ -91,9 +120,9 @@ is straight forward.
    
 		conda list | grep 'bioconductor'
 		
-   To check the packages within R-3.5.1 installed via bioconda,
+   To check the packages within R-3.5.1 installed via Bioconda,
    make sure you start up the correct R version. It should be located
-   in the `miniconda` directory. My bioconda installation of R, is
+   in the `miniconda` directory. My Bioconda installation of R, is
    located in an environment called `demo`.
    
    R executable, 
@@ -107,12 +136,12 @@ is straight forward.
 
 ## Basic Workflow with references to Bioconda
 
-NOTE: As a starting point, (We assume) you have miniconda installed on
+**NOTE:** As a starting point, (We assume) you have miniconda installed on
       your machine. Without it interfering with your base R
       environment. If not, please take a look at [Miniconda Installation][]
 
 
-1. Start your `conda` environement where you want to install your package,
+1. Start your `conda` environment where you want to install your package,
 
 		conda activate <bioconductor-environment>
 	
@@ -184,6 +213,45 @@ The [Bioconda FAQ][] section is another good resource for any
 questions you may have.
 
 
+## FAQ
+
+1. Package is not available through Bioconda?
+
+   You can make your own recipe if the Bioconductor package is not
+   available in the Bioconda channel. Usually, the recipe is not
+   available because there is a dependency which is not available
+   through Bioconda/conda-forge/defaults channels. The implication is
+   that, that dependency needs to become a recipe (this is usually
+   hard work).
+   
+   How to contribute a recipe:
+   https://bioconda.github.io/contribute-a-recipe.html
+   
+   Troubleshooting failed recipes:
+   https://bioconda.github.io/troubleshooting.html
+ 
+1. Why does BiocManager fails sometimes?
+
+   BiocManager install fails sometimes because of a compiler mismatch,
+   where the conda environment is using a complier installed at the
+   system level.
+   
+   This is because of the compiler mismatch.
+   
+   If you start installing your packages with `conda`, then you should
+   use `conda` only. Using BiocManager within a conda R-base
+   installtion, can lead to compiler mismatches. This leads to
+   installtions to fail.
+
+1. How do I access Data-experiment, data-annotation packages?
+
+   Data-experiment, data-annotation packages might work directly with
+   BiocManager. This is because there is no compiled code on the
+   data-experiment and data-annotation packages.
+   
+   You may use BiocManager for these types of packages.
+
+
 ### (Optional) Installing Conda on a Mac / Linux
 
 Goal: Installing conda on a mac without overriding my system python or
@@ -223,7 +291,7 @@ NOTE: Default version of python is 3.6
 
 [BiocManager](https://cran.r-project.org/web/packages/BiocManager/index.html)
 
-[List of Avialable packages](https://bioconda.github.io/recipes.html)
+[List of available packages](https://bioconda.github.io/recipes.html)
 
 [Bioconda FAQ](https://bioconda.github.io/faqs.html)
 
@@ -242,7 +310,7 @@ NOTE: Default version of python is 3.6
 
 [BiocManager]: https://cran.r-project.org/web/packages/BiocManager/index.html
 
-[List of Avialable packages]: https://bioconda.github.io/recipes.html
+[List of available packages]: https://bioconda.github.io/recipes.html
 
 [Bioconda FAQ]: https://bioconda.github.io/faqs.html
 
@@ -250,6 +318,6 @@ NOTE: Default version of python is 3.6
 
 [Gitter channel]: https://gitter.im/bioconda/Lobby
 
-[Miniconda Installtion]: https://conda.io/miniconda.html
+[Miniconda Installation]: https://conda.io/miniconda.html
 
 [Install Bioconductor]: http://bioconductor.org/install/
