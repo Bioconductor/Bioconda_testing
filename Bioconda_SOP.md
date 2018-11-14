@@ -243,6 +243,15 @@ questions you may have.
    installtion, can lead to compiler mismatches. This leads to
    installtions to fail.
 
+   Eg:
+   
+	   https://support.bioconductor.org/p/114457/#114885
+	   
+	   https://support.bioconductor.org/p/111158/
+	   
+	   ## conda's libz is not being found by biocLite()
+	   https://support.bioconductor.org/p/108808/
+
 1. How do I access Data-experiment, data-annotation packages?
 
    Data-experiment, data-annotation packages might work directly with
@@ -251,6 +260,16 @@ questions you may have.
    
    You may use BiocManager for these types of packages.
 
+1. If I am skeptical about if Bioconda installed the correct set of
+   packages, how do I check?
+   
+   You can install the package BiocManager (via Bioconda), and then
+   check using
+   
+		BiocManager::valid()
+	   
+   This will tell you all the packages, which are too old, and too new
+   for that version of R, and Bioconductor.
 
 ### (Optional) Installing Conda on a Mac / Linux
 
